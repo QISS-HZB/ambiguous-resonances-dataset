@@ -25,7 +25,7 @@ Download the HDF5 file from the [URL above](https://figshare.com/account/article
 cloned repository within the conda environment:
 
 ```sh
-python dataset-gui.py
+python dataset_gui.py
 ```
 
 This will launch the GUI with the standard HDF5 file. However, if the
@@ -33,7 +33,7 @@ user wants to have a different dataset file, the `–-dataset` flag can be
 used as follows:
 
 ```
-python dataset-gui.py --dataset /PATH/CUSTOM_DATASET.hdf5
+python dataset_gui.py --dataset /PATH/CUSTOM_DATASET.hdf5
 ```
 
 The use of the GUI is intuitive and self-explanatory. There are two
