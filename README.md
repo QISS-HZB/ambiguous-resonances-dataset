@@ -39,7 +39,7 @@ python dataset_gui.py --dataset /PATH/CUSTOM_DATASET.hdf5
 The use of the GUI is intuitive and self-explanatory. There are two
 tabs, one for <sup>15</sup>N and the other for <sup>13</sup>C ambiguous resonances.
 The $m_s$ state of the electronic spin transition should be chosen, with
-the order $M$ of the XY8 sequence, the bias magnetic field $B_0$, minium
+the order $M$ of the XY8 sequence, the bias magnetic field $B_0$, minimum
 and maximum $\tau$ or $f$ range. In addition, for <sup>15</sup>N, the angle
 $\theta$ must be specified and for <sup>13</sup>C, the carbon families. The
 expected resonances from the gyromagnetic ratios of other nuclear spins

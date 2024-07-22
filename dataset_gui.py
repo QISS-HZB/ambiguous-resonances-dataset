@@ -1,12 +1,14 @@
 """
-This file contains the GUI application for the dataset of the paper "Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds" by L. Tsunaki et al, available at .
+This file contains the GUI application for the dataset of the paper "Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds" by L. Tsunaki et al, available at https://arxiv.org/abs/2407.09411 . The hdf5 file for the dataset is provided at https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895 .
 
 The script instantiates and runs the GUI window, and sets up the analysis parameters after reading the HDF5 dataset file.
 The entire application for now is in a gigantic class with a bunch of repeated methods which initialise and set up all the necessary widgets and layouts.
 The function `load_data()` is the entry point which provides the values of all the parameters upon which the widgets and layouts are created (see `__init__` for the implementaion.).
 Visualisation is handled by matplotlib through the respective update_plot functions, which read the selected parameters and control the plot drawn for each tab (N15 and C13).
 
-Version: 1.0
+Version: 1.1
+Date: 22-07-2024
+License: GPL-3.0
 """
 import os
 import tables as tb
@@ -17,6 +19,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Tries to import either PySide6 or PyQt6 depending on the user's environment
 try:
     from PySide6.QtWidgets import (
         QApplication,
@@ -271,8 +274,8 @@ class InteractivePlotApp(QMainWindow):
 
         self.plot_x_layout_N.addWidget(QLabel("Plot against (x-axis)"))
 
-        self.radio1_N = QRadioButton("τ")
-        self.radio2_N = QRadioButton("f")
+        self.radio1_N = QRadioButton("τ (μs)")
+        self.radio2_N = QRadioButton("f (MHz)")
 
         self.radio1_N.setChecked(True)
 
@@ -421,8 +424,8 @@ class InteractivePlotApp(QMainWindow):
 
         self.plot_x_layout_C.addWidget(QLabel("Plot against (x-axis)"))
 
-        self.radio1_C = QRadioButton("τ")
-        self.radio2_C = QRadioButton("f")
+        self.radio1_C = QRadioButton("τ (μs)")
+        self.radio2_C = QRadioButton("f (MHz)")
 
         self.radio1_C.setChecked(True)
 
