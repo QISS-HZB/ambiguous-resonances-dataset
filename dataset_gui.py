@@ -616,7 +616,7 @@ class InteractivePlotApp(QMainWindow):
                 x_axis,
                 XY8,
                 linewidth=1,
-                label="Simulated data",
+                label="Sim",
                 color="#BD7D55",
                 alpha=0.8,
             )
@@ -633,7 +633,7 @@ class InteractivePlotApp(QMainWindow):
                 color="#557DBD",
                 s=0.2,
                 alpha=0.7,
-                label="Experimental Data",
+                label="Exp",
             )
 
         else:
@@ -663,7 +663,12 @@ class InteractivePlotApp(QMainWindow):
         self.ax.set_title(rf"XY8-{selected_M}, $B_0=${selected_B0} mT, $\theta=${selected_theta}$^\circ$")
         self.ax.set_xlim(selected_x[0], selected_x[1])
 
-        self.ax.legend(fancybox=True, framealpha=0.3)
+        # plot the arXiv reference
+        x_min, x_max = self.ax.get_xlim()
+        y_min, y_max = self.ax.get_ylim()
+        self.ax.text(x_min + (x_max - x_min)*.01, y_max - (y_max - y_min)*.01, 'arXiv:2407.09411 [quant-ph]', fontsize=3, color='black', ha='left', va='top', alpha=.6)
+
+        self.ax.legend(fancybox=True, framealpha=0.3, loc="upper right", bbox_to_anchor=(1.08, 1))
         self.fig.tight_layout()
 
         self.canvas.draw()
@@ -724,7 +729,7 @@ class InteractivePlotApp(QMainWindow):
                 color="#557DBD",
                 s=0.2,
                 alpha=0.7,
-                label="Experimental Data",
+                label="Exp",
             )
 
         else:
@@ -754,12 +759,16 @@ class InteractivePlotApp(QMainWindow):
         self.ax.set_title(rf"XY8-{selected_M}, $B_0=${selected_B0} mT")
         self.ax.set_xlim(selected_x[0], selected_x[1])
 
-        self.ax.legend(fancybox=True, framealpha=0.3)
+        # plot the arXiv reference
+        x_min, x_max = self.ax.get_xlim()
+        y_min, y_max = self.ax.get_ylim()
+        self.ax.text(x_min + (x_max - x_min)*.01, y_max - (y_max - y_min)*.01, 'arXiv:2407.09411 [quant-ph]', fontsize=3, color='black', ha='left', va='top', alpha=.6)
+
+        self.ax.legend(fancybox=True, framealpha=0.3, loc="upper right", bbox_to_anchor=(1.08, 1))
         self.fig.tight_layout()
 
         self.canvas.draw()
         self.plot_ready = True
-
 
 if __name__ == "__main__":
     app = QApplication()
