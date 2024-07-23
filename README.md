@@ -2,7 +2,7 @@
 
 This repository contains the python script for the graphical user interface (GUI) application of the dataset from the paper *Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds* by *L. Tsunaki et al*, available at: <https://arxiv.org/abs/2407.09411>
 
-It is used to visualize and analyze the simulations of ambiguous resonances contained in the dataset, available at https://figshare.com/account/articles/26245895.
+It is used to visualize and analyze the simulations of ambiguous resonances contained in the dataset, available at <https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895>.
 
 In this GUI, the user can choose specific experimental parameters and compare with experimental data.
 
@@ -21,7 +21,7 @@ conda install numpy matplotlib pyside6 pytables
 
 ## Usage
 
-Download the HDF5 file from the [URL above](https://figshare.com/account/articles/26245895) and place it in the same directory as the script. And then to launch the GUI, one can simply run the following command in the
+Download the HDF5 file from the [URL above](https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895) and place it in the same directory as the script. And then to launch the GUI, one can simply run the following command in the
 cloned repository within the conda environment:
 
 ```sh
