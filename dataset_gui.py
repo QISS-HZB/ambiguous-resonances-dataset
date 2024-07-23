@@ -1,5 +1,6 @@
 """
-This file contains the GUI application for the dataset of the paper "Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds" by L. Tsunaki et al, available at https://arxiv.org/abs/2407.09411 . The hdf5 file for the dataset is provided at https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895 .
+This file contains the GUI application for the dataset of the paper "Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds" by L. Tsunaki et al, available at https://arxiv.org/abs/2407.09411 .
+The hdf5 file for the dataset is provided at https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895 .
 
 The script instantiates and runs the GUI window, and sets up the analysis parameters after reading the HDF5 dataset file.
 The entire application for now is in a gigantic class with a bunch of repeated methods which initialise and set up all the necessary widgets and layouts.
@@ -7,9 +8,10 @@ The function `load_data()` is the entry point which provides the values of all t
 Visualisation is handled by matplotlib through the respective update_plot functions, which read the selected parameters and control the plot drawn for each tab (N15 and C13).
 
 Version: 1.1
-Date: 22-07-2024
+Date: 23-07-2024
 License: GPL-3.0
 """
+
 import os
 import tables as tb
 import argparse
@@ -81,9 +83,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-f", "--dataset", default="./dataset.h5")
 args = parser.parse_args()
 
+
 class InteractivePlotApp(QMainWindow):
     """
-    Class for the GUI application.
+    Class for the application window.
 
     Class Methods
     -------------
@@ -103,6 +106,7 @@ class InteractivePlotApp(QMainWindow):
         update_plot_N(self) : Update the plot with the selected parameters for 15N.
         update_plot_C(self) : Update the plot with the selected parameters for 13C.
     """
+
     def __init__(self):
         """
         Sets up the GUI window.
@@ -666,7 +670,16 @@ class InteractivePlotApp(QMainWindow):
         # plot the arXiv reference
         x_min, x_max = self.ax.get_xlim()
         y_min, y_max = self.ax.get_ylim()
-        self.ax.text(x_min + (x_max - x_min)*.01, y_max - (y_max - y_min)*.01, 'arXiv:2407.09411 [quant-ph]', fontsize=3, color='black', ha='left', va='top', alpha=.6)
+        self.ax.text(
+            x_min + (x_max - x_min) * 0.01,
+            y_max - (y_max - y_min) * 0.01,
+            "arXiv:2407.09411 [quant-ph]",
+            fontsize=3,
+            color="black",
+            ha="left",
+            va="top",
+            alpha=0.6,
+        )
 
         self.ax.legend(fancybox=True, framealpha=0.3, loc="upper right", bbox_to_anchor=(1.08, 1))
         self.fig.tight_layout()
@@ -762,13 +775,23 @@ class InteractivePlotApp(QMainWindow):
         # plot the arXiv reference
         x_min, x_max = self.ax.get_xlim()
         y_min, y_max = self.ax.get_ylim()
-        self.ax.text(x_min + (x_max - x_min)*.01, y_max - (y_max - y_min)*.01, 'arXiv:2407.09411 [quant-ph]', fontsize=3, color='black', ha='left', va='top', alpha=.6)
+        self.ax.text(
+            x_min + (x_max - x_min) * 0.01,
+            y_max - (y_max - y_min) * 0.01,
+            "arXiv:2407.09411 [quant-ph]",
+            fontsize=3,
+            color="black",
+            ha="left",
+            va="top",
+            alpha=0.6,
+        )
 
         self.ax.legend(fancybox=True, framealpha=0.3, loc="upper right", bbox_to_anchor=(1.08, 1))
         self.fig.tight_layout()
 
         self.canvas.draw()
         self.plot_ready = True
+
 
 if __name__ == "__main__":
     app = QApplication()
