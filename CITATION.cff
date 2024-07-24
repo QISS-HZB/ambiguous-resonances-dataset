@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: Ambiguous Resonances Dataset
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Anmol
+    family-names: Singh
+    email: anmol.singh@helmholtz-berlin.de
+    orcid: 'https://orcid.org/0009-0000-1578-626X'
+    affiliation: Helmholtz Zentrum Berlin
+  - given-names: Lucas
+    email: lucas.tsunaki@helmholtz-berlin.de
+    affiliation: Helmholtz Zentrum Berlin
+    family-names: Tsunaki
+    orcid: 'https://orcid.org/0009-0003-3534-6300'
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2407.09411
+repository-code: 'https://github.com/QISS-HZB/ambiguous-resonances-dataset'
+repository-artifact: >-
+  https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895
+license: GPL-3.0
+version: '1.1'
