@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 """
 This file contains the GUI application for the dataset of the paper "Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds" by L. Tsunaki et al, available at https://arxiv.org/abs/2407.09411 .
 The hdf5 file for the dataset is provided at https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895 .

@@ -2,7 +2,7 @@
 
 This repository contains the python script for the graphical user interface (GUI) application of the dataset from the paper *Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds* by *L. Tsunaki et al*, available at: <https://arxiv.org/abs/2407.09411>
 
-It is used to visualize and analyze the simulations of ambiguous resonances contained in the dataset, available at <https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895>.
+It is used to visualize and analyze the simulations of ambiguous resonances contained in the dataset, available at <https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895>
 
 In this GUI, the user can choose specific experimental parameters and compare with experimental data.
 
