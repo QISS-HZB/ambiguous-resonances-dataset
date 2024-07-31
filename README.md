@@ -2,7 +2,7 @@
 
 This repository contains the python script for the graphical user interface (GUI) application of the dataset from the paper *Ambiguous Resonances in Multipulse Quantum Sensing with Nitrogen Vacancy Centers in Diamonds* by *L. Tsunaki et al*, available at: <https://arxiv.org/abs/2407.09411>
 
-It is used to visualize and analyze the simulations of ambiguous resonances contained in the dataset, available at <https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895>
+It is used to visualize and analyze the simulations of ambiguous resonances contained in the dataset, available at <https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895> or <https://box.fu-berlin.de/s/ajm6wijbKWJQKQS>
 
 In this GUI, the user can choose specific experimental parameters and compare with experimental data.
 
@@ -21,8 +21,20 @@ conda install numpy matplotlib pyside6 pytables
 
 ## Usage
 
-Download the HDF5 file from the [URL above](https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895) and place it in the same directory as the script. And then to launch the GUI, one can simply run the following command in the
-cloned repository within the conda environment:
+Download the HDF5 file from [here](https://figshare.com/articles/dataset/Dataset_for_Ambiguous_Resonances_in_Multipulse_Quantum_Sensing_with_NVs/26245895) or [here](https://box.fu-berlin.de/s/ajm6wijbKWJQKQS) and place it in the same directory as the script. 
+
+<details>
+
+<summary>Optional: verify the integrity of the downloaded dataset</summary>
+
+## sha256 checksum
+
+To make sure that the dataset was downloaded correctly, we provide the sha256 checksum. Run `sha256sum dataset.h5` on the downloaded file to obtain the checksum. It should match `bef06a160aa38eaa237c54f4c4f9c2cc0bff621547ec9e41fb6b038d2f9b0530` 
+
+</details>
+
+
+And then to launch the GUI, one can simply run the following command in the cloned repository within the conda environment:
 
 ```sh
 python dataset_gui.py
