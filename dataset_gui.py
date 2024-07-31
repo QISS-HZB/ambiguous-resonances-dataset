@@ -8,8 +8,8 @@ The entire application for now is in a gigantic class with a bunch of repeated m
 The function `load_data()` is the entry point which provides the values of all the parameters upon which the widgets and layouts are created (see `__init__` for the implementaion.).
 Visualisation is handled by matplotlib through the respective update_plot functions, which read the selected parameters and control the plot drawn for each tab (N15 and C13).
 
-Version: 1.1
-Date: 23-07-2024
+Version: 1.3
+Date: 31-07-2024
 License: GPL-3.0
 """
 
@@ -255,25 +255,6 @@ class InteractivePlotApp(QMainWindow):
         gyromagnetic_btn_lay.addRow(self.select_all_button_N, self.clear_button_N)
         self.tab_15N_layout.addLayout(gyromagnetic_btn_lay)
 
-        # x range
-        # self.x_layout_N = QFormLayout()
-
-        # self.x_min_label_N = QLabel("min x:")
-        # self.x_min_widget_N = QDoubleSpinBox()
-        # self.x_min_widget_N.setRange(0.05, 10.0)
-        # self.x_min_widget_N.setSingleStep(0.1)
-        # self.x_min_widget_N.setValue(0.05)
-
-        # self.x_max_label_N = QLabel("max x:")
-        # self.x_max_widget_N = QDoubleSpinBox()
-        # self.x_max_widget_N.setRange(0.05, 10.0)
-        # self.x_max_widget_N.setSingleStep(0.1)
-        # self.x_max_widget_N.setValue(3)
-        # self.x_layout_N.addRow(self.x_min_label_N, self.x_min_widget_N)
-        # self.x_layout_N.addRow(self.x_max_label_N, self.x_max_widget_N)
-
-        # self.tab_15N_layout.addLayout(self.x_layout_N)
-
         self.plot_x_layout_N = QVBoxLayout()
         self.plot_x_btn_layout_N = QHBoxLayout()
 
@@ -430,25 +411,6 @@ class InteractivePlotApp(QMainWindow):
         gyro_btn_layout = QFormLayout()
         gyro_btn_layout.addRow(self.select_all_btn_gyro_C, self.clear_btn_gyro_C)
         self.tab_13C_layout.addLayout(gyro_btn_layout)
-
-        # x range
-        self.x_layout_C = QFormLayout()
-
-        # self.x_min_label_C = QLabel("min x:")
-        # self.x_min_widget_C = QDoubleSpinBox()
-        # self.x_min_widget_C.setRange(0.05, 10.0)
-        # self.x_min_widget_C.setSingleStep(0.1)
-        # self.x_min_widget_C.setValue(0.05)
-
-        # self.x_max_label_C = QLabel("max x:")
-        # self.x_max_widget_C = QDoubleSpinBox()
-        # self.x_max_widget_C.setRange(0.05, 10.0)
-        # self.x_max_widget_C.setSingleStep(0.1)
-        # self.x_max_widget_C.setValue(3)
-        # self.x_layout_C.addRow(self.x_min_label_C, self.x_min_widget_C)
-        # self.x_layout_C.addRow(self.x_max_label_C, self.x_max_widget_C)
-
-        # self.tab_13C_layout.addLayout(self.x_layout_C)
 
         self.plot_x_layout_C = QVBoxLayout()
         self.plot_x_btn_layout_C = QHBoxLayout()
@@ -649,7 +611,6 @@ class InteractivePlotApp(QMainWindow):
         selected_M = int(self.M_widget_N.currentText())
         selected_B0 = float(self.B0_widget_N.currentText())
         selected_theta = self.theta_widget_N.currentText()
-        # selected_x = [self.x_min_widget_N.value(), self.x_max_widget_N.value()]
         selected_gyromagnetic = [
             item.data(Qt.UserRole) for item in self.gyromagnetic_widget_N.selectedItems()
         ]
@@ -742,7 +703,6 @@ class InteractivePlotApp(QMainWindow):
         self.ax.set_xlabel(x_axis_label)
         self.ax.set_ylabel("Transition Probability")
         self.ax.set_title(rf"XY8-{selected_M}, $B_0=${selected_B0} mT, $\theta=${selected_theta}$^\circ$")
-        # self.ax.set_xlim(selected_x[0], selected_x[1])
 
         # plot the arXiv reference
         x_min, x_max = self.ax.get_xlim()
@@ -776,7 +736,6 @@ class InteractivePlotApp(QMainWindow):
         selected_ms = int(self.ms_widget_C.currentText())
         selected_M = int(self.M_widget_C.currentText())
         selected_B0 = float(self.B0_widget_C.currentText())
-        # selected_x = [self.x_min_widget_C.value(), self.x_max_widget_C.value()]
         selected_gyromagnetic = [
             item.data(Qt.UserRole) for item in self.gyromagnetic_widget_C.selectedItems()
         ]
@@ -869,7 +828,6 @@ class InteractivePlotApp(QMainWindow):
         self.ax.set_xlabel(x_axis_label)
         self.ax.set_ylabel("Transition Probability")
         self.ax.set_title(rf"XY8-{selected_M}, $B_0=${selected_B0} mT")
-        # self.ax.set_xlim(selected_x[0], selected_x[1])
 
         # plot the arXiv reference
         x_min, x_max = self.ax.get_xlim()
