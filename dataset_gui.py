@@ -209,17 +209,17 @@ class InteractivePlotApp(QMainWindow):
         # Optional experimental data file to compare with
         self.expt_file_label_N = QLabel("No file selected")
 
-        self.expt_file_btn_N = QPushButton("Select File")
+        self.expt_file_btn_N = QPushButton("Select file")
         self.expt_file_btn_N.clicked.connect(self.select_file_N)
 
         expt_HLay = QHBoxLayout()
-        self.expt_label_N = QLabel("Compare with Experimental Data")
+        self.expt_label_N = QLabel("Compare with experimental Data")
         self.expt_chkbox_N = QCheckBox()
         expt_HLay.addWidget(self.expt_label_N)
         expt_HLay.addWidget(self.expt_chkbox_N)
 
         self.expt_label_N.setToolTip(
-            "Experimental data must be in a file with two columns: first column is the pulse separation tau in μs of frequency in MHz "
+            "Experimental data must be in a file with two columns: first column is the pulse separation tau or frequency "
             "the second column is the transition probability."
         )
         self.expt_filename_N = ""  # to handle plotting when no file is selected
@@ -256,31 +256,31 @@ class InteractivePlotApp(QMainWindow):
         self.tab_15N_layout.addLayout(gyromagnetic_btn_lay)
 
         # x range
-        self.x_layout_N = QFormLayout()
+        # self.x_layout_N = QFormLayout()
 
-        self.x_min_label_N = QLabel("min x:")
-        self.x_min_widget_N = QDoubleSpinBox()
-        self.x_min_widget_N.setRange(0.05, 10.0)
-        self.x_min_widget_N.setSingleStep(0.1)
-        self.x_min_widget_N.setValue(0.05)
+        # self.x_min_label_N = QLabel("min x:")
+        # self.x_min_widget_N = QDoubleSpinBox()
+        # self.x_min_widget_N.setRange(0.05, 10.0)
+        # self.x_min_widget_N.setSingleStep(0.1)
+        # self.x_min_widget_N.setValue(0.05)
 
-        self.x_max_label_N = QLabel("max x:")
-        self.x_max_widget_N = QDoubleSpinBox()
-        self.x_max_widget_N.setRange(0.05, 10.0)
-        self.x_max_widget_N.setSingleStep(0.1)
-        self.x_max_widget_N.setValue(3)
-        self.x_layout_N.addRow(self.x_min_label_N, self.x_min_widget_N)
-        self.x_layout_N.addRow(self.x_max_label_N, self.x_max_widget_N)
+        # self.x_max_label_N = QLabel("max x:")
+        # self.x_max_widget_N = QDoubleSpinBox()
+        # self.x_max_widget_N.setRange(0.05, 10.0)
+        # self.x_max_widget_N.setSingleStep(0.1)
+        # self.x_max_widget_N.setValue(3)
+        # self.x_layout_N.addRow(self.x_min_label_N, self.x_min_widget_N)
+        # self.x_layout_N.addRow(self.x_max_label_N, self.x_max_widget_N)
 
-        self.tab_15N_layout.addLayout(self.x_layout_N)
+        # self.tab_15N_layout.addLayout(self.x_layout_N)
 
         self.plot_x_layout_N = QVBoxLayout()
         self.plot_x_btn_layout_N = QHBoxLayout()
 
         self.plot_x_layout_N.addWidget(QLabel("Plot against (x-axis)"))
 
-        self.radio1_N = QRadioButton("τ (μs)")
-        self.radio2_N = QRadioButton("f (MHz)")
+        self.radio1_N = QRadioButton("τ")
+        self.radio2_N = QRadioButton("f")
 
         self.radio1_N.setChecked(True)
 
@@ -294,7 +294,33 @@ class InteractivePlotApp(QMainWindow):
         self.plot_x_layout_N.addLayout(self.plot_x_btn_layout_N)
         self.tab_15N_layout.addLayout(self.plot_x_layout_N)
 
-        self.update_button_N = QPushButton("Update Plot")
+        self.unit_layout_N = QVBoxLayout()
+        self.unit_btn_layout_N = QHBoxLayout()
+
+        self.unit_layout_N.addWidget(QLabel("Units (τ/f):"))
+
+        self.unit_btn1_N = QRadioButton("ns/GHz")
+        self.unit_btn2_N = QRadioButton("μs/MHz")
+        self.unit_btn3_N = QRadioButton("ms/kHz")
+        self.unit_btn4_N = QRadioButton("s/Hz")
+
+        self.unit_btn2_N.setChecked(True)
+
+        self.unit_btngrp_N = QButtonGroup()
+        self.unit_btngrp_N.addButton(self.unit_btn1_N, id=0)
+        self.unit_btngrp_N.addButton(self.unit_btn2_N, id=1)
+        self.unit_btngrp_N.addButton(self.unit_btn3_N, id=2)
+        self.unit_btngrp_N.addButton(self.unit_btn4_N, id=3)
+
+        self.unit_btn_layout_N.addWidget(self.unit_btn1_N)
+        self.unit_btn_layout_N.addWidget(self.unit_btn2_N)
+        self.unit_btn_layout_N.addWidget(self.unit_btn3_N)
+        self.unit_btn_layout_N.addWidget(self.unit_btn4_N)
+
+        self.unit_layout_N.addLayout(self.unit_btn_layout_N)
+        self.tab_15N_layout.addLayout(self.unit_layout_N)
+
+        self.update_button_N = QPushButton("Update plot")
         self.update_button_N.clicked.connect(self.update_plot_N)
         self.tab_15N_layout.addWidget(self.update_button_N)
 
@@ -339,17 +365,17 @@ class InteractivePlotApp(QMainWindow):
         # Optional experimental data file to compare with
         self.expt_file_label_C = QLabel("No file selected")
 
-        self.expt_file_btn_C = QPushButton("Select File")
+        self.expt_file_btn_C = QPushButton("Select file")
         self.expt_file_btn_C.clicked.connect(self.select_file_C)
 
         expt_HLay = QHBoxLayout()
-        self.expt_label_C = QLabel("Compare with Experimental Data")
+        self.expt_label_C = QLabel("Compare with experimental Data")
         self.expt_chkbox_C = QCheckBox()
         expt_HLay.addWidget(self.expt_label_C)
         expt_HLay.addWidget(self.expt_chkbox_C)
 
         self.expt_label_C.setToolTip(
-            "Experimental data must be in a file with two columns: first column is the pulse separation tau in μs and "
+            "Experimental data must be in a file with two columns: first column is the pulse separation tau or frequency and "
             "the second column is the transition probability."
         )
         self.expt_filename_C = ""  # to handle plotting when no file is selected
@@ -359,7 +385,7 @@ class InteractivePlotApp(QMainWindow):
 
         self.tab_13C_layout.addLayout(expt_HLay)
 
-        self.families_label = QLabel("13C Families:")
+        self.families_label = QLabel("¹³C Families:")
         self.families_widget = QListWidget()
         self.families_widget.addItems([fam_value for fam_value in self.fam])
         self.families_widget.setSelectionMode(QAbstractItemView.SelectionMode.MultiSelection)
@@ -408,29 +434,29 @@ class InteractivePlotApp(QMainWindow):
         # x range
         self.x_layout_C = QFormLayout()
 
-        self.x_min_label_C = QLabel("min x:")
-        self.x_min_widget_C = QDoubleSpinBox()
-        self.x_min_widget_C.setRange(0.05, 10.0)
-        self.x_min_widget_C.setSingleStep(0.1)
-        self.x_min_widget_C.setValue(0.05)
+        # self.x_min_label_C = QLabel("min x:")
+        # self.x_min_widget_C = QDoubleSpinBox()
+        # self.x_min_widget_C.setRange(0.05, 10.0)
+        # self.x_min_widget_C.setSingleStep(0.1)
+        # self.x_min_widget_C.setValue(0.05)
 
-        self.x_max_label_C = QLabel("max x:")
-        self.x_max_widget_C = QDoubleSpinBox()
-        self.x_max_widget_C.setRange(0.05, 10.0)
-        self.x_max_widget_C.setSingleStep(0.1)
-        self.x_max_widget_C.setValue(3)
-        self.x_layout_C.addRow(self.x_min_label_C, self.x_min_widget_C)
-        self.x_layout_C.addRow(self.x_max_label_C, self.x_max_widget_C)
+        # self.x_max_label_C = QLabel("max x:")
+        # self.x_max_widget_C = QDoubleSpinBox()
+        # self.x_max_widget_C.setRange(0.05, 10.0)
+        # self.x_max_widget_C.setSingleStep(0.1)
+        # self.x_max_widget_C.setValue(3)
+        # self.x_layout_C.addRow(self.x_min_label_C, self.x_min_widget_C)
+        # self.x_layout_C.addRow(self.x_max_label_C, self.x_max_widget_C)
 
-        self.tab_13C_layout.addLayout(self.x_layout_C)
+        # self.tab_13C_layout.addLayout(self.x_layout_C)
 
         self.plot_x_layout_C = QVBoxLayout()
         self.plot_x_btn_layout_C = QHBoxLayout()
 
         self.plot_x_layout_C.addWidget(QLabel("Plot against (x-axis)"))
 
-        self.radio1_C = QRadioButton("τ (μs)")
-        self.radio2_C = QRadioButton("f (MHz)")
+        self.radio1_C = QRadioButton("τ")
+        self.radio2_C = QRadioButton("f")
 
         self.radio1_C.setChecked(True)
 
@@ -444,8 +470,34 @@ class InteractivePlotApp(QMainWindow):
         self.plot_x_layout_C.addLayout(self.plot_x_btn_layout_C)
         self.tab_13C_layout.addLayout(self.plot_x_layout_C)
 
+        self.unit_layout_C = QVBoxLayout()
+        self.unit_btn_layout_C = QHBoxLayout()
+
+        self.unit_layout_C.addWidget(QLabel("Units (τ/f):"))
+
+        self.unit_btn1_C = QRadioButton("ns/GHz")
+        self.unit_btn2_C = QRadioButton("μs/MHz")
+        self.unit_btn3_C = QRadioButton("ms/kHz")
+        self.unit_btn4_C = QRadioButton("s/Hz")
+
+        self.unit_btn2_C.setChecked(True)
+
+        self.unit_btngrp_C = QButtonGroup()
+        self.unit_btngrp_C.addButton(self.unit_btn1_C, id=0)
+        self.unit_btngrp_C.addButton(self.unit_btn2_C, id=1)
+        self.unit_btngrp_C.addButton(self.unit_btn3_C, id=2)
+        self.unit_btngrp_C.addButton(self.unit_btn4_C, id=3)
+
+        self.unit_btn_layout_C.addWidget(self.unit_btn1_C)
+        self.unit_btn_layout_C.addWidget(self.unit_btn2_C)
+        self.unit_btn_layout_C.addWidget(self.unit_btn3_C)
+        self.unit_btn_layout_C.addWidget(self.unit_btn4_C)
+
+        self.unit_layout_C.addLayout(self.unit_btn_layout_C)
+        self.tab_13C_layout.addLayout(self.unit_layout_C)
+
         # update button
-        self.update_button_C = QPushButton("Update Plot")
+        self.update_button_C = QPushButton("Update plot")
         self.update_button_C.clicked.connect(self.update_plot_C)
         self.tab_13C_layout.addWidget(self.update_button_C)
 
@@ -464,6 +516,7 @@ class InteractivePlotApp(QMainWindow):
         self.B0_C = np.unique(self.C13_table.col("field"))
         self.M_C = np.unique(self.C13_table.col("order"))
 
+        # microseconds and megahertz
         self.tau = np.linspace(0.05, 3, 1000)
         self.freq = 1 / 2 / self.tau
 
@@ -475,6 +528,7 @@ class InteractivePlotApp(QMainWindow):
             for k, v in zip(self.gyro_table.col("substance"), self.gyro_table.col("value"))
         }
 
+        # MHz/Tesla
         self.gyromagnetic_ratios = {}
         for k, v in self.gyromagnetic_ratios_raw.items():
             temp_part = k.split("-")
@@ -595,7 +649,7 @@ class InteractivePlotApp(QMainWindow):
         selected_M = int(self.M_widget_N.currentText())
         selected_B0 = float(self.B0_widget_N.currentText())
         selected_theta = self.theta_widget_N.currentText()
-        selected_x = [self.x_min_widget_N.value(), self.x_max_widget_N.value()]
+        # selected_x = [self.x_min_widget_N.value(), self.x_max_widget_N.value()]
         selected_gyromagnetic = [
             item.data(Qt.UserRole) for item in self.gyromagnetic_widget_N.selectedItems()
         ]
@@ -603,6 +657,16 @@ class InteractivePlotApp(QMainWindow):
         XY8 = self.N15_table.read_where(
             f"(order=={selected_M}) & (field=={selected_B0}) & (field_angle=={selected_theta}) & (ms=={selected_ms})"
         )
+
+        selected_unit_id = self.unit_btngrp_N.checkedId()
+        unit_list = [1e3, 1, 1e-3, 1e-6]
+        unit_label_t = [
+            r"$\tau$ (ns)",
+            r"$\tau$ ($\mu$s)",
+            r"$\tau$ (ms)",
+            r"$\tau$ (s)",
+        ]
+        unit_label_f = ["f (GHz)", "f (MHz)", "f (kHz)", "f (Hz)"]
 
         if XY8.size == 0:
             self.ax.text(
@@ -616,7 +680,11 @@ class InteractivePlotApp(QMainWindow):
             )
         else:
             XY8 = XY8["data"][0]
-            x_axis = self.freq if self.radio2_N.isChecked() else self.tau
+            x_axis = (
+                self.freq / unit_list[selected_unit_id]
+                if self.radio2_N.isChecked()
+                else self.tau * unit_list[selected_unit_id]
+            )
             self.ax.plot(
                 x_axis,
                 XY8,
@@ -647,7 +715,13 @@ class InteractivePlotApp(QMainWindow):
         # Plot vertical lines for the gyromagnetic ratios chosen
         if selected_B0 != 0:
             for idx, val in enumerate(selected_gyromagnetic):
-                pos = 1 / (2 * self.gyromagnetic_ratios[val] * selected_B0 * 1e-4)
+                # gyromagnetic ratios are stored in terms of MHz/T, so we correct for that
+                # further, the fields are in mT, so we convert it to T
+                pos = 1 / (
+                    2 * self.gyromagnetic_ratios[val] / unit_list[selected_unit_id] * selected_B0 * 1e-3
+                )
+                if self.radio2_N.isChecked():
+                    pos = 1 / 2 / pos
                 gyro_label = self.gyro_key_map(val)
                 self.ax.axvline(
                     x=pos,
@@ -662,11 +736,13 @@ class InteractivePlotApp(QMainWindow):
             B0err.setWindowTitle("Cannot divide by zero")
             B0err.exec()
 
-        x_axis_label = "f (MHz)" if self.radio2_N.isChecked() else r"$\tau$ ($\mu$s)"
+        x_axis_label = (
+            unit_label_f[selected_unit_id] if self.radio2_N.isChecked() else unit_label_t[selected_unit_id]
+        )
         self.ax.set_xlabel(x_axis_label)
         self.ax.set_ylabel("Transition Probability")
         self.ax.set_title(rf"XY8-{selected_M}, $B_0=${selected_B0} mT, $\theta=${selected_theta}$^\circ$")
-        self.ax.set_xlim(selected_x[0], selected_x[1])
+        # self.ax.set_xlim(selected_x[0], selected_x[1])
 
         # plot the arXiv reference
         x_min, x_max = self.ax.get_xlim()
@@ -682,7 +758,7 @@ class InteractivePlotApp(QMainWindow):
             alpha=0.6,
         )
 
-        self.ax.legend(fancybox=True, framealpha=0.3, loc="upper right", bbox_to_anchor=(1.08, 1))
+        self.ax.legend()
         self.fig.tight_layout()
 
         self.canvas.draw()
@@ -700,10 +776,20 @@ class InteractivePlotApp(QMainWindow):
         selected_ms = int(self.ms_widget_C.currentText())
         selected_M = int(self.M_widget_C.currentText())
         selected_B0 = float(self.B0_widget_C.currentText())
-        selected_x = [self.x_min_widget_C.value(), self.x_max_widget_C.value()]
+        # selected_x = [self.x_min_widget_C.value(), self.x_max_widget_C.value()]
         selected_gyromagnetic = [
             item.data(Qt.UserRole) for item in self.gyromagnetic_widget_C.selectedItems()
         ]
+
+        selected_unit_id = self.unit_btngrp_C.checkedId()
+        unit_list = [1e3, 1, 1e-3, 1e-6]
+        unit_label_t = [
+            r"$\tau$ (ns)",
+            r"$\tau$ ($\mu$s)",
+            r"$\tau$ (ms)",
+            r"$\tau$ (s)",
+        ]
+        unit_label_f = ["f (GHz)", "f (MHz)", "f (kHz)", "f (Hz)"]
 
         selected_fam = [item.text() for item in self.families_widget.selectedItems()]
 
@@ -723,7 +809,11 @@ class InteractivePlotApp(QMainWindow):
                 )
             else:
                 XY8 = XY8["data"][0]
-                x_axis = self.freq if self.radio2_C.isChecked() else self.tau
+                x_axis = (
+                    self.freq / unit_list[selected_unit_id]
+                    if self.radio2_C.isChecked()
+                    else self.tau * unit_list[selected_unit_id]
+                )
                 self.ax.plot(
                     x_axis,
                     XY8,
@@ -752,7 +842,13 @@ class InteractivePlotApp(QMainWindow):
         # Plot vertical lines for the gyromagnetic ratios chosen
         if selected_B0 != 0:
             for idx, val in enumerate(selected_gyromagnetic):
-                pos = 1 / (2 * self.gyromagnetic_ratios[val] * selected_B0 * 1e-4)
+                # gyromagnetic ratios are stored in terms of MHz/T, so we correct for that
+                # further, the fields are in mT, so we convert it to T
+                pos = 1 / (
+                    2 * self.gyromagnetic_ratios[val] / unit_list[selected_unit_id] * selected_B0 * 1e-3
+                )
+                if self.radio2_C.isChecked():
+                    pos = 1 / 2 / pos
                 gyro_label = self.gyro_key_map(val)
                 self.ax.axvline(
                     x=pos,
@@ -767,11 +863,13 @@ class InteractivePlotApp(QMainWindow):
             B0err.setWindowTitle("Cannot divide by zero")
             B0err.exec()
 
-        x_axis_label = "f (MHz)" if self.radio2_C.isChecked() else r"$\tau$ ($\mu$s)"
+        x_axis_label = (
+            unit_label_f[selected_unit_id] if self.radio2_C.isChecked() else unit_label_t[selected_unit_id]
+        )
         self.ax.set_xlabel(x_axis_label)
         self.ax.set_ylabel("Transition Probability")
         self.ax.set_title(rf"XY8-{selected_M}, $B_0=${selected_B0} mT")
-        self.ax.set_xlim(selected_x[0], selected_x[1])
+        # self.ax.set_xlim(selected_x[0], selected_x[1])
 
         # plot the arXiv reference
         x_min, x_max = self.ax.get_xlim()
@@ -787,7 +885,7 @@ class InteractivePlotApp(QMainWindow):
             alpha=0.6,
         )
 
-        self.ax.legend(fancybox=True, framealpha=0.3, loc="upper right", bbox_to_anchor=(1.08, 1))
+        self.ax.legend()
         self.fig.tight_layout()
 
         self.canvas.draw()
