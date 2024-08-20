@@ -6,6 +6,7 @@ It is used to visualize and analyze the simulations of ambiguous resonances cont
 
 In this GUI, the user can choose specific experimental parameters and compare with experimental data.
 
+![Screenshot of the gui](screenshot_v1.3.png "Screenshot")
 
 ## Setup
 The application provides a GUI based on the
@@ -29,7 +30,7 @@ Download the HDF5 file from [here](https://figshare.com/articles/dataset/Dataset
 
 ## sha256 checksum
 
-To make sure that the dataset was downloaded correctly, we provide the sha256 checksum. Run `sha256sum dataset.h5` on the downloaded file to obtain the checksum. It should match `bef06a160aa38eaa237c54f4c4f9c2cc0bff621547ec9e41fb6b038d2f9b0530` 
+To make sure that the dataset was downloaded correctly, we provide the sha256 checksum. Run `sha256sum dataset.h5` on the downloaded file to obtain the checksum. It should match `8913fb153dec5251285c2126a30f42c1d7e7f085b39a207fcb235470bad9c2fd`.
 
 </details>
 
