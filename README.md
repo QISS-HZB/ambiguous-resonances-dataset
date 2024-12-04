@@ -15,9 +15,8 @@ Python bindings for Qt6. It has dependencies on `NumPy`, `Matplotlib`,
 `conda` virtual environment with:
 
 ```sh
-conda create --name dataset-env python
+conda create --name dataset-env python numpy matplotlib pyside6 pytables
 conda activate dataset-env 
-conda install numpy matplotlib pyside6 pytables
 ```
 
 ## Usage
