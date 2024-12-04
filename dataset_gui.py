@@ -38,7 +38,6 @@ try:
         QListWidget,
         QAbstractItemView,
         QFormLayout,
-        QDoubleSpinBox,
         QMessageBox,
         QTabWidget,
         QRadioButton,
@@ -61,7 +60,6 @@ except ImportError:
         QListWidget,
         QAbstractItemView,
         QFormLayout,
-        QDoubleSpinBox,
         QMessageBox,
         QRadioButton,
         QButtonGroup,
@@ -175,7 +173,7 @@ class InteractivePlotApp(QMainWindow):
         self.M_widget_N.addItems([str(val) for val in self.M_n])
         self.M_label_N.setToolTip(
             "Order of the XY8-M sequence. For high order, the exact duration of the pi pulses becomes important "
-            "factor. In these simulations we used w1 = 40*sqrt(2) MHz, with the sqrt(2) factor due to the S=1 spin number of the electronic sin."
+            "factor. In these simulations we used w1 = 40 MHz, in order to avoid spurious resonances from long pulses."
         )
 
         # External magnetic field intensity
@@ -323,7 +321,7 @@ class InteractivePlotApp(QMainWindow):
         self.M_widget_C.addItems([str(val) for val in self.M_C])
         self.M_label_C.setToolTip(
             "Order of the XY8-M sequence. For high order, the exact duration of the pi pulses becomes important "
-            "factor. In these simulations we used w1 = 40*sqrt(2) MHz, with the sqrt(2) factor due to the S=1 spin number of the electronic sin."
+            "factor. In these simulations we used w1 = 40 MHz, in order to avoid spurious resonances from long pulses."
         )
 
         # External magnetic field intensity
